@@ -1,0 +1,53 @@
+{
+    "name": "LaTeX Translate",
+    "description" : "Translate LaTeX",
+    "version": "1.0",
+    "manifest_version": 2,
+    "browser_action": {
+        "default_popup": "html/index.html",
+        "default_icon": "img/icon.png"
+    },
+
+    
+    "permissions":
+	[
+		"contextMenus", 
+		"tabs", 
+		"notifications", 
+		"webRequest", 
+		"webRequestBlocking",
+		"storage", 
+		"http://*/*", 
+		"https://*/*" 
+    ],
+    
+    "web_accessible_resources": ["js/*"],
+
+    "icons":
+	{
+		"16": "img/icon.png",
+		"48": "img/icon.png",
+		"128": "img/icon.png"
+	},
+
+    "commands": {
+     "_execute_browser_action": {
+       "suggested_key": {
+         "default": "Ctrl+Shift+F",
+         "mac": "MacCtrl+Shift+F"
+       },
+       "description": "Opens hello.html"
+     }
+    },
+   
+    "content_scripts": 
+	[
+		{
+
+			"matches": ["<all_urls>"],
+			"js": ["js/jquery.js", "js/notranslate.js"],
+			"run_at": "document_start"
+		}
+    ]
+    
+ }
